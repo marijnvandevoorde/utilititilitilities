@@ -5,6 +5,13 @@
 1. Add a submodule and use the git url of this repostory. Unpack it to app/Vendor/Sevenedge
 2. Move the autoload.php to the app/Vendor
 3. Wherever you need a class in this library, load that autoload.php file using require_once(APP . 'Vendor' . DS . 'autoload.php'). If you need it on every request, just put it on top of the AppController.php file or in bootstrap.
+4. You can now use the classes if you use the right Namespace prefix. For example, to use the generate method in the Bitly class, just do: 
+```
+#!php
+
+Sevenedge\Utilities\Bitly::generate('http://www.google.com', ...);
+```
+
 
 
 ## Remarks ##

@@ -1,4 +1,11 @@
 <?php
+/**
+ *
+ * A nice wrapper around some code by
+ * @Author Jonathan Beck
+ *
+ *
+ */
 
 namespace Sevenedge\Utilities;
 

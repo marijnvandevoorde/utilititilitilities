@@ -108,7 +108,8 @@ class TwitterAPI extends SocialAPI {
 					'type' => $type,
 					'external_url' => '//twitter.com/' . $tweet->user->screen_name . '/status/' . $tweet->id,
 					'image' => $photo_url,
-					'caption' => $tweet->text
+					'caption' => $tweet->text,
+					'lang' => $tweet->lang
 				);
 				if ($type === 'video') { // TODO THIS WILLL NEVER HAPPEN ATM, BUT IF TWITTER EVER STARTS ADDING VIDEO... HANDLE THAT SHIT
 					$medium['video'] = $video_url;

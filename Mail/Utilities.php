@@ -14,7 +14,7 @@
 namespace Sevenedge\Mail;
 
 
-class Html2TextException extends Exception {
+class Html2TextException extends \Exception {
 	var $more_info;
 
 	public function __construct($message = "", $more_info = "") {
@@ -41,7 +41,7 @@ class Utilities
         public static function convert_html_to_text($html) {
                 $html = self::fix_newlines($html);
 
-                $doc = new DOMDocument();
+                $doc = new \DOMDocument();
                 if (!$doc->loadHTML($html))
 					throw new \InvalidArgumentException("Could not load HTML - badly formed?");
 
@@ -77,13 +77,13 @@ class Utilities
                 // get the next child
                 $nextNode = $node->nextSibling;
                 while ($nextNode != null) {
-                        if ($nextNode instanceof DOMElement) {
+                        if ($nextNode instanceof \DOMElement) {
                                 break;
                         }
                         $nextNode = $nextNode->nextSibling;
                 }
                 $nextName = null;
-                if ($nextNode instanceof DOMElement && $nextNode != null) {
+                if ($nextNode instanceof \DOMElement && $nextNode != null) {
                         $nextName = strtolower($nextNode->nodeName);
                 }
 
@@ -94,13 +94,13 @@ class Utilities
                 // get the previous child
                 $nextNode = $node->previousSibling;
                 while ($nextNode != null) {
-                        if ($nextNode instanceof DOMElement) {
+                        if ($nextNode instanceof \DOMElement) {
                                 break;
                         }
                         $nextNode = $nextNode->previousSibling;
                 }
                 $nextName = null;
-                if ($nextNode instanceof DOMElement && $nextNode != null) {
+                if ($nextNode instanceof \DOMElement && $nextNode != null) {
                         $nextName = strtolower($nextNode->nodeName);
                 }
 
@@ -108,10 +108,10 @@ class Utilities
         }
 
         public static function iterate_over_node($node) {
-                if ($node instanceof DOMText) {
+                if ($node instanceof \DOMText) {
                         return preg_replace("/\\s+/im", " ", $node->wholeText);
                 }
-                if ($node instanceof DOMDocumentType) {
+                if ($node instanceof \DOMDocumentType) {
                         // ignore
                         return "";
                 }

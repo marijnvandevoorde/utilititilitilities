@@ -31,7 +31,7 @@
 			call_user_func($this->_errHandler, $level, $message);
 		}
 
-		protected static function _calcDistance ($coord1, $coord2) {
+		public static function _calcDistance ($coord1, $coord2) {
 			$φ1 = deg2rad($coord1['latitude']);
 			$φ2 = deg2rad($coord2['latitude']);
 			$Δφ = deg2rad($coord2['latitude']-$coord1['latitude']);

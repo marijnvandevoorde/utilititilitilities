@@ -57,7 +57,6 @@
 
 			$connection = $this->_getConnection();
 			$key = $connection->addRequest($endpoint, $params);
-			$this->_log($params);
 
 			$result = $connection->execute();
 			if ($result !== 0) {
@@ -110,7 +109,8 @@
 										continue;
 									}
 								}
-								if(self::_calcDistance($filters['location'],$ig['location']) > $filters['location']['radius']) {
+
+								if(self::_calcDistance($filters['location'],$ig['location']) > $filters['location']['radius'] * 1000) {
 									continue;
 								}
 							}
@@ -135,7 +135,7 @@
 						'external_url' => preg_replace('/^[^\/]+\/\//', '//', $ig['link']),
 						'image' => preg_replace('/^[^\/]+\/\//', '//', $ig['images']['standard_resolution']['url']),
 						'caption' => $ig['caption']['text'],
-						'hashtag' => $hashTag
+						'hashtag' => '#' .$hashTag
 					);
 					if ($ig['type'] === 'video') {
 						$medium['video'] = preg_replace('/^[^\/]+\/\//', '//', $ig['videos']['standard_resolution']['url']);
@@ -182,7 +182,6 @@
 				if (empty($result['data'])) {
 					break;
 				}
-				$this->_log($params);
 			}
 
 			return $media;

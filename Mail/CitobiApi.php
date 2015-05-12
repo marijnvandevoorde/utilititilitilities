@@ -7,7 +7,8 @@
  *
  */
 
-namespace Sevenedge\Utilities;
+namespace Sevenedge\Mail;
+use Sevenedge\Utilities\CurlRequest;
 
 class CitobiApi
 {

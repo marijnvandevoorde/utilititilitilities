@@ -11,7 +11,7 @@ namespace Sevenedge\Utilities;
 				return false;
 			}
 			if ($parts[1] ===  "gmail.com") {
-				$parts[0] = preg_replace('/\.[^@]*/', '' , $parts[0]);
+				$parts[0] = str_replace('.', '', $parts[0]);
 			}
 			$parts[0] = preg_replace('/\+.*$/', '', $parts[0]);
 			return implode('@', $parts);

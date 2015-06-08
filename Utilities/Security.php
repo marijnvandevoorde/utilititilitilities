@@ -66,8 +66,10 @@ class Security {
 	 * 			- tolerance: optional. the tolerance of the verification. in counts or in seconds, depending on the type value.
 	 *
 	 * @param $debug. set to true to debug. it will always return the same token with no errors.
+	 * @param $update. Default true, which means this request will return an updated token This will prevent the stimestamp version to expire (new timestamp on every request) and it takes care of increasing the counter for you
+	 * Set to false to disable this behaviour. Only makes sense if you want to create a token that expires after 30 minutes.
 	 */
-	public static function verifyToken($token, $debug = false) {
+	public static function verifyToken($token, $debug = false, $update = true) {
 		// whatever happens, we return a token that lasts for 5 minutes
 		if ($debug) {
 			return array('token' => 'debug');
@@ -94,9 +96,9 @@ class Security {
 		else {
 			$receivedToken = explode('-', $token['token']);
 			if (count($receivedToken) !== 2) {
-				$response['error'] = 'invalidtoken';
+				$response['error'] = __('invalidtoken');
 			} elseif (sha1($token['secret'] . $receivedToken[1]) !== $receivedToken[0]) {
-				$response['error'] = 'invalidtoken';
+				$response['error'] = __('invalidtoken');
 			} else {
 				if (isset($token['numberobfuscation'])) {
 					$receivedToken[1] = self::deobfuscateNumber($receivedToken[1], $token['numberobfuscation']['inverse'], $token['numberobfuscation']['randxor'], $token['numberobfuscation']['maxid']);
@@ -114,7 +116,7 @@ class Security {
 
 				}
 				if ($reference < $receivedToken[1] || $reference - $receivedToken[1] > (isset($token['tolerance']) ? $token['tolerance'] : 1)) {
-					$response['error'] = 'tokenexpired';
+					$response['error'] = __('tokenexpired');
 				}
 			}
 		}
@@ -147,6 +149,6 @@ class Security {
 			default:
 				throw new \NotImplementedException("No implementation for type {$token["type"]}");
 		}
-		return array(sha1($token['secret'] . $seed), $seed);
+		return array(sha1($token['secret'] . (isset($token['extraData']) ? $token['extraData'] : '') . $seed), $seed);
 	}
 }

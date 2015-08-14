@@ -585,9 +585,11 @@ class ImageTools {
 				// we rely mostly on mime types or file analysis
 				// fetch it from the mime type.
 				if (!isset($data['type'])) {
-					$fileInfo = new finfo(FILEINFO_MIME);
+					$fileInfo = new \finfo(FILEINFO_MIME);
 					$data['type'] = $fileInfo->file($data['tmp_name']);
+					$data['type'] = preg_replace('/;? .*/', '', $data['type']);
 				}
+
 				if (isset($data['tmp_name'])) {
 					$analysis['path'] = $data['tmp_name'];
 				}

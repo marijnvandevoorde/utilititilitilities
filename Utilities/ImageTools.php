@@ -25,19 +25,22 @@ class ImageTools {
 	CONST
 		TYPE_JPEG = 'image/jpeg',
 		TYPE_PNG = 'image/png',
-		TYPE_GIF = 'image/gif';
+		TYPE_GIF = 'image/gif',
+		TYPE_PDF = 'application/pdf';
 
 	private static $_extensionmapping = array(
 		self::TYPE_JPEG => '.jpg',
 		self::TYPE_PNG => '.png',
-		self::TYPE_GIF => '.gif'
+		self::TYPE_GIF => '.gif',
+		self::TYPE_PDF => '.pdf'
 	);
 
 	private static $_mimetypemapping = array(
 		'.jpg' => self::TYPE_JPEG,
 		'.jpeg' => self::TYPE_JPEG,
 		'.png' => self::TYPE_PNG,
-		'.gif' => self::TYPE_GIF
+		'.gif' => self::TYPE_GIF,
+		'.pdf' => self::TYPE_PDF
 	);
 
 

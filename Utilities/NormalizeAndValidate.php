@@ -26,7 +26,8 @@ namespace Sevenedge\Utilities;
 		}
 
         public static function normalize($string) {
-            return strtolower(self::remove_accents($string, true));
+            $string = strtolower(self::remove_accents($string, true));
+            return str_replace(array('(','/','\\',')','{','}','[',']'), '', $string);
         }
 
         /**

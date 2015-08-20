@@ -362,9 +362,11 @@ class HiperfTranslateBehavior extends TranslateBehavior
                 if ($hydrated) {
                     $row->clean();
                 }
+                $row['translated'] = false;
 
                 return $row;
             }
+            $row['translated'] = true;
 
             $translation = $row['translation'];
 

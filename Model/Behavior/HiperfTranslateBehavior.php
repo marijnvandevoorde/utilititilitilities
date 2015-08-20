@@ -292,6 +292,8 @@ class HiperfTranslateBehavior extends TranslateBehavior
             }
         } else {
 
+            $values = $entity->extract($this->_translationFields(), false);
+            $fields = array_keys($values);
             $translation = $this->_translationTable()->newEntity(
                 $where + $values,
                 [
@@ -299,6 +301,10 @@ class HiperfTranslateBehavior extends TranslateBehavior
                     'markNew' => true
                 ]
             );
+            foreach ($fields as $field) {
+                $translation->set($field, $values[$field]);
+                $entity->dirty($field, false);
+            }
         }
 
         $entity->set('_i18n', array_merge($bundled, [$translation]));

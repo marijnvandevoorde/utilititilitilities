@@ -303,7 +303,7 @@ class HiperfTranslateBehavior extends TranslateBehavior
             );
             foreach ($fields as $field) {
                 $translation->set($field, $values[$field]);
-                $entity->dirty($field, false);
+                $entity->dirty($field, true);
             }
         }
 

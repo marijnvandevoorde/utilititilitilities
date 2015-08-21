@@ -5,29 +5,31 @@ namespace Sevenedge\Utilities;
     class NormalizeAndValidate
     {
 
-		public static function normalizeEmail($email) {
-			$parts = explode('@', $email);
-			if (count($parts) !== 2) {
-				return false;
-			}
-			if ($parts[1] ===  "gmail.com") {
-				$parts[0] = str_replace('.', '', $parts[0]);
-			}
-			$parts[0] = preg_replace('/\+.*$/', '', $parts[0]);
-			return implode('@', $parts);
-		}
+        public static function normalizeEmail($email) {
+            $parts = explode('@', $email);
+            if (count($parts) !== 2) {
+                return false;
+            }
+            if ($parts[1] ===  "gmail.com") {
+                $parts[0] = str_replace('.', '', $parts[0]);
+            }
+            $parts[0] = preg_replace('/\+.*$/', '', $parts[0]);
+            return implode('@', $parts);
+        }
 
-		public static function DNSValidateDomain($domain, $record = 'A') {
-			return checkdnsrr($domain, $record);
-		}
+        public static function DNSValidateDomain($domain, $record = 'A') {
+            return checkdnsrr($domain, $record);
+        }
 
-		public static function DNSValidateEmailDomain($domain) {
-			return self::DNSValidateDomain($domain, 'MX');
-		}
+        public static function DNSValidateEmailDomain($domain) {
+            return self::DNSValidateDomain($domain, 'MX');
+        }
 
         public static function normalize($string) {
             $string = strtolower(self::remove_accents($string, true));
-            return str_replace(array('(','/','\\',')','{','}','[',']'), '', $string);
+            $string = preg_replace('/[^a-z0-9\-_\.\+]/iu', '', $string);
+            $string = preg_replace('/_{2,}/iu', '_', $string);
+            return $string;
         }
 
         /**

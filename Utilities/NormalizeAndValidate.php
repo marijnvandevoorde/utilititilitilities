@@ -27,7 +27,7 @@ namespace Sevenedge\Utilities;
 
         public static function normalize($string) {
             $string = strtolower(self::remove_accents($string, true));
-            $string = preg_replace('/[^a-z0-9\-_\.\+]/iu', '', $string);
+            $string = preg_replace('/[^a-z0-9\-_\.]/iu', '', $string);
             $string = preg_replace('/_{2,}/iu', '_', $string);
             return $string;
         }

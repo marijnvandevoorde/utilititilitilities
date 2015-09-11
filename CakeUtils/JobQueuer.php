@@ -2,6 +2,7 @@
 
     namespace Sevenedge\CakeUtils;
 
+	use App\Model\Entity\Job;
 	use Cake\Core\App;
 	use Cake\ORM\TableRegistry;
 
@@ -30,7 +31,7 @@
 			$jobs = TableRegistry::get('Jobs');
 			$now = time();
 
-			$todo = $jobs->find('all', array('conditions' =>
+			$todos = $jobs->find('all', array('conditions' =>
 				array('OR' =>
 					array(
 						'started IS NULL',
@@ -42,62 +43,66 @@
 				)),
 
 				'order' => array('id' =>'ASC')
-			))->first();
+			))->toArray();
 
 
+			foreach ($todos as $todo) {
+				if (!empty($todo)) {
 
-			if(!empty($todo)) {
-				$todo->started = date('Y-m-d H:i:s');
-				$jobs->save($todo);
-				try {
-					$params = unserialize($todo->params);
-					$params = $params? $params : array();
+					$todo->started = date('Y-m-d H:i:s');
+					$jobs->save($todo);
+					try {
+						$params = unserialize($todo->params);
+						$params = $params ? $params : array();
 
-					$type = 'coremethod';
+						$type = 'coremethod';
 
-					$task = explode(".", $todo->task);
+						$task = explode(".", $todo->task);
 
-					if (count($task) > 1) {
-						$type = 'instance';
-					} else {
-						$task = explode("::", $todo->task);
 						if (count($task) > 1) {
-							$type = 'static';
+							$type = 'instance';
 						}
+						else {
+							$task = explode("::", $todo->task);
+							if (count($task) > 1) {
+								$type = 'static';
+							}
+						}
+
+						// We might have to include some files here.
+						if (in_array($type, array('instance', 'static'))) {
+							// it's a class. and it's not static!
+							$class = array_shift($task);
+
+						}
+						$task = array_shift($task);
+
+						switch ($type) {
+							case 'static':
+								call_user_func_array($class . "::" . $task, $params);
+								break;
+							case 'instance':
+								//TODO might want to add some paramters for the constructor in the future, right? Even though not needed in this project.
+								// HOWTO: split up params. make it an assoc array with 'init' and 'call' params.
+								$instance = new $class();
+								call_user_func_array(array(
+									$instance,
+									$task
+								), $params);
+								break;
+							case 'coremethod':
+								call_user_func_array($task, $params);
+								break;
+							default:
+								throw new NotImplementedException("can't find that job:" . print_r($todo, 1));
+						}
+
+						$todo->executed = date('Y-m-d H:i:s');
+						$jobs->save($todo);
+					} catch (Exception $e) {
+						$todo->started = NULL;
+						$jobs->save($todo);
 					}
-
-					// We might have to include some files here.
-					if (in_array($type, array('instance', 'static'))) {
-						// it's a class. and it's not static!
-						$class = array_shift($task);
-
-					}
-					$task = array_shift($task);
-
-					switch ($type) {
-						case 'static':
-							call_user_func_array($class . "::" . $task, $params);
-							break;
-						case 'instance':
-							//TODO might want to add some paramters for the constructor in the future, right? Even though not needed in this project.
-                            // HOWTO: split up params. make it an assoc array with 'init' and 'call' params.
-							$instance = new $class();
-							call_user_func_array(array($instance, $task), $params);
-							break;
-						case 'coremethod':
-							call_user_func_array($task, $params);
-							break;
-						default:
-							throw new NotImplementedException("can't find that job:" . print_r($todo, 1));
-					}
-
-					$todo->executed = date('Y-m-d H:i:s');
-					$jobs->save($todo);
-				}
-				catch (Exception $e) {
-					$todo->started = null;
-					$jobs->save($todo);
-					throw $e;
 				}
 			}
 		}

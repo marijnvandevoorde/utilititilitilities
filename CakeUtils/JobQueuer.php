@@ -108,6 +108,7 @@
 						$todo->executed = date('Y-m-d H:i:s');
 						$jobs->save($todo);
 					} catch (Exception $e) {
+						
 						$todo->started = NULL;
 						$jobs->save($todo);
 					}

@@ -17,7 +17,7 @@ class Mandril
     // $subject 	=> 'a regular string as subject'
     // $global_merge_vars AND $merge_vars : http://help.mandrill.com/entries/21678522-How-do-I-use-merge-tags-to-add-dynamic-content-
     // $async => if are more then 10 recipients, doesn't matter what you fill in here... see https://mandrillapp.com/api/docs/messages.JSON.html#method-send
-    public function sendMail($to_emails, $html, $text, $subject, $from_mail, $from_name, $global_merge_vars = false, $merge_vars = false, $async = false)
+    public function sendMail($to_emails, $html, $text, $subject, $from_mail, $from_name, $global_merge_vars = false, $merge_vars = false, $async = false, $additionalParams = array())
     {
 
         $to = array();
@@ -43,6 +43,10 @@ class Mandril
             ),
             'async' => $async,
         );
+
+        if (is_array($additionalParams)) {
+            $data_array['message'] = array_merge($data_array['message'], $additionalParams);
+        }
 
 
         if ($global_merge_vars && is_array($global_merge_vars) && $merge_vars && is_array($merge_vars)) {

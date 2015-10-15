@@ -141,6 +141,7 @@ class SEMinifierHelper extends Helper {
 		} else {
 			return $this->Html->script($url, $options);
 		}
+		
 	}
 	
 }

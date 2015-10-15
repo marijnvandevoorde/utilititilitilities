@@ -7,6 +7,8 @@
 3. Wherever you need a class in this library, load that autoload.php file using require_once(APP . 'Vendor' . DS . 'autoload.php'). If you need it on every request, just put it on top of the AppController.php file or in bootstrap.
 4. You can now use the classes if you use the right Namespace prefix. For example, to use the generate method in the Bitly class, just do: 
 ```
+5. To install the plugin to use the helpers, add "Plugin::load('Sevenedge');" to bootstrap.php and add this key and value to the 'plugins' array in vendor/cakephp-plugins.php:
+'Sevenedge' => $baseDir . '/vendor/sevenedge/Sevenedge/'
 #!php
 
 Sevenedge\Utilities\Bitly::generate('http://www.google.com', ...);

@@ -1,14 +1,10 @@
 {
-  "name": "Sevenedge/Utilities",
-  "description": "Sevenedge Utilities",
-  "type": "cakephp-plugin",
-  "license":"Get in touch with us and we'll dicuss it",
-  "homepage": "http://www.sevenedge.be",
+  "name":  "Sevenedge/Utilities",
+  "description":  "Sevenedge Utilities"
+  "license": "Get in touch with us and we'll dicuss it",
+  "homepage":  "http://www.sevenedge.be",
   "require": {
-	"php": ">=5.4.16",
-	"cakephp/cakephp": "~3.0",
-    "cakephp/plugin-installer": "*",
-    "tholu/php-packer": "*"
+	"php": ">=5.4.16"
   },
   "require-dev": {
 	"phpunit/phpunit": "*"

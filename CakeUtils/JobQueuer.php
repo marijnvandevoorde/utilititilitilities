@@ -77,9 +77,11 @@
 						}
 						$task = array_shift($task);
 
+						$doContinue = false;
+
 						switch ($type) {
 							case 'static':
-								call_user_func_array($class . "::" . $task, $params);
+								$doContinue = (!call_user_func_array($class . "::" . $task, $params)) ? true : false;
 								break;
 							case 'instance':
 								//TODO might want to add some paramters for the constructor in the future, right? Even though not needed in this project.
@@ -96,10 +98,17 @@
 							default:
 								throw new NotImplementedException("can't find that job:" . print_r($todo, 1));
 						}
+						
+						// If we cant login to the server,
+						// go to next job
+						if ($doContinue) {
+							continue;
+						}
 
 						$todo->executed = date('Y-m-d H:i:s');
 						$jobs->save($todo);
 					} catch (Exception $e) {
+						
 						$todo->started = NULL;
 						$jobs->save($todo);
 					}

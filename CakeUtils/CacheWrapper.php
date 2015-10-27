@@ -1,6 +1,7 @@
 <?php
 
 namespace Sevenedge\CakeUtils;
+use Cake\Cache\Cache;
 
 /**
  * Class CacheWrapper
@@ -8,11 +9,9 @@ namespace Sevenedge\CakeUtils;
  * @Author Marijn Vandevoorde <marijn@sevenedge.be>
  * @package Sevenedge\CakeUtils
  */
-class CacheWrapper extends \Cache {
+class CacheWrapper extends Cache {
 
 	private static $_TTL_OFFSET = 600;
-
-
 
 	public static function setTTLOffset($secs) {
 		self::$_TTL_OFFSET = $secs;
@@ -24,19 +23,7 @@ class CacheWrapper extends \Cache {
 	}
 
 	public static function write($key, $value, $config = 'default') {
-		$settings = self::settings($config);
-
-		if (empty($settings)) {
-			return false;
-		}
-		if (!self::isInitialized($config)) {
-			return false;
-		}
-		$key = self::$_engines[$config]->key($key);
-
-		if (!$key || is_resource($value)) {
-			return false;
-		}
+		$settings = self::config($config);
 
 		// wrap value with ttl offset?
 		$value = isset($settings['prefetch']) ? array('ttl' => time() + $settings['duration'] - $settings['prefetch'], 'val' => $value) : $value;
@@ -58,19 +45,11 @@ class CacheWrapper extends \Cache {
 	}
 
 	public static function read($key, $config = 'default') {
-		$settings = self::settings($config);
-
-		if (empty($settings)) {
-			return false;
-		}
-		if (!self::isInitialized($config)) {
-			return false;
-		}
-		$key = self::$_engines[$config]->key($key);
-		if (!$key) {
-			return false;
-		}
-		$value = self::$_engines[$config]->read($settings['prefix'] . $key);
+		$settings = self::config('_cake_core_');
+		parent::write($key, 'test', $config);
+		$value = parent::read($key, $config);
+		var_dump($value);
+		//$value = self::$_engines[$config]->read($settings['prefix'] . $key);
 
 		if (isset($settings['prefetch'])) {
 			if ($value['ttl'] > 0) {

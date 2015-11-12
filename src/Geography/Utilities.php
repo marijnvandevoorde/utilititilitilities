@@ -31,14 +31,16 @@ class Utilities {
 		}
 		return $points;
 	}
-	
-	public static function calcDistance ($coord1, $coord2) {
-		$phi1 = deg2rad($coord1['latitude']);
-		$phi2 = deg2rad($coord2['latitude']);
-		$delta_phi = deg2rad($coord2['latitude'] - $coord1['latitude']);
-		$delta_landa = deg2rad($coord2['longitude'] - $coord1['longitude']);
 
-		$a = sin($delta_phi/2) * sin($delta_phi/2) + cos($phi1) * cos($phi2) * sin($delta_landa/2) * sin($delta_landa/2);
+	public static function _calcDistance ($coord1, $coord2) {
+		$φ1 = deg2rad($coord1['latitude']);
+		$φ2 = deg2rad($coord2['latitude']);
+		$Δφ = deg2rad($coord2['latitude']-$coord1['latitude']);
+		$Δλ = deg2rad($coord2['longitude']-$coord1['longitude']);
+
+		$a = sin($Δφ/2) * sin($Δφ/2) +
+				cos($φ1) * cos($φ2) *
+				sin($Δλ/2) * sin($Δλ/2);
 		$c = 2 * atan2(sqrt($a), sqrt(1-$a));
 		return 6378137 * $c;
 	}

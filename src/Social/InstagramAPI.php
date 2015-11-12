@@ -6,14 +6,14 @@ use Sevenedge\Utilities\Utilities;
 
 
 /**
- * Class Spotifapi
+ * Class InstagramAPI
  * @author Marijn Vandevoorde <marijn@marijnworks.be>
  * @link http://www.marijnworks.be
  *
  * Magical spotify api wrapper. you can login and pretty much do everything you want. only thing is that you have to authorize your account once. (this can be done by generating the landingurl below
  *
  * Instructions, well most of this should be self-explaning. One thing though: before you can use it, you have to authorize your app in the browser. to do this, generate an auth url using
- * Spotifapi::generateAuthorizationURI(clientId, scopes = array('scope1','scope2',...), 'callbackuri');
+ * Iapi::generateAuthorizationURI(clientId, scopes = array('scope1','scope2',...), 'callbackuri');
  * the callback uri must match one in the settings of the app! you have to add this in the settings on the spotify develop site or it won't work.
  *
  * The current set of endpoints is somewhat limited, but you can add more yourself:
@@ -65,7 +65,7 @@ class InstagramAPI extends SocialAPI
 		$this->redirect_uri = $redirect_uri;
 		$this->scope = $scope;
 		$this->credentials = $credentials;
-		$this->cr = new Marijnworks\CurlRequest();
+		$this->cr = new Utilities\CurlRequest();
 
 		//filling out the templates
 		$authenticationuri = str_replace("{client_id}", $this->clientId, self::$templates['authenticationuri']);

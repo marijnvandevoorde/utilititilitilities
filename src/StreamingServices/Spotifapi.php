@@ -20,7 +20,7 @@ use Sevenedge\Utilities\Utilities;
  * And check the methods below as a reference.
  *
  */
-class Spotifapi
+class SpotifAPI
 {
 	private $clientId, $clientSecret, $redirect_uri, $scope, $credentials;
 	private $cr, $logCallback;

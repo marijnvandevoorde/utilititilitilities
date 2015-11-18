@@ -46,7 +46,6 @@ class Security {
 
 
 	/**
-	 *
 	 * Simple yet effective token verification.
 	 * Will verify if the counter is behaving as expected (i.e.: +1) or if the the token hasn't expired (by comparing timestamps)
 	 * Prevents fiddling by using a secure signature hash.
@@ -67,6 +66,8 @@ class Security {
 	 * @param $debug. set to true to debug. it will always return the same token with no errors.
 	 * @param $update. Default true, which means this request will return an updated token This will prevent the stimestamp version to expire (new timestamp on every request) and it takes care of increasing the counter for you
 	 * Set to false to disable this behaviour. Only makes sense if you want to create a token that expires after 30 minutes.
+	 * @return a new token and validation data in an associative array.
+	 * @throws \NotImplementedException: when the requested token type is not implemented
 	 */
 	public static function verifyToken($token, $debug = false, $update = true) {
 		// whatever happens, we return a token that lasts for 5 minutes
@@ -125,6 +126,7 @@ class Security {
 	/**
 	 * @param $token basically the same token array used in @see self::verifyToken
 	 * @return array an array with two elements. The hash and the value that represents either a timestamp or counter number.
+	 * @throws \NotImplementedException: when the requested token type is not implemented
 	 */
 	private static function _createToken($token) {
 		switch ($token['type']) {
@@ -150,4 +152,5 @@ class Security {
 		}
 		return array(sha1($token['secret'] . (isset($token['extraData']) ? $token['extraData'] : '') . $seed), $seed);
 	}
+
 }

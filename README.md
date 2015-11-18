@@ -1,19 +1,27 @@
-# Sevenedge Utilities #
+# Sevenedge Utilities  Library#
 
 ## Installation instructions##
 
-1. Add a submodule and use the git url of this repostory. Unpack it to app/Vendor/Sevenedge
-2. copy the autoload.php file from the root to the app/Vendor folder.
-3. Wherever you need a class in this library, load that autoload.php file using require_once(APP . 'Vendor' . DS . 'autoload.php'). If you need it on every request, just put it on top of the AppController.php file or in bootstrap.
-4. You can now use the classes if you use the right Namespace prefix. For example, to use the generate method in the Bitly class, just do: 
+Since we want this repo to remain private, we can't add it to packagist for composer installation. Using git as a repository next to packagist is quite simple though. Just add this to the bottom of your composer.json file (or add the repository to existing repositories);
+```!json
+ "repositories": [
+    {
+        "type": "vcs",
+        "url":  "git@bitbucket.org:sevenedge/sevenedge-utilities.git"
+    }
+]
 ```
-#!php
 
-Sevenedge\Utilities\Bitly::generate('http://www.google.com', ...);
+Now, add the Library to the require section as you would with a regular packagist repository:
 ```
+    "Sevenedge/Utilities": "dev-master"
+```        
 
-The namespacing and the autoload file take care of loading the classes for you. No need to include all files you need separately. This also lazy loads, so the overhead stays limited.
+Run composer update and you're done!
 
+## Using the libarary ##
+The classes & their methods should speak for themselves. If not, they might have some in-code comments. 
+If  extensive instructions are in place, you should find / put them in the docs folder.
 
 ## Remarks ##
 
@@ -21,6 +29,8 @@ If the website is not hosted on the client's server, or if you have to push the 
 
 
 ## Requirements / Prequisites ##
+
+We've decided not to put the requirements in composer because they're only rarely needed, and not everything can be installed through composer anyway. But requirements you might bump into are:
 * a lot of the classes require curl to be installed
 * some require GD or Imagick for Image processing
 * the twitterapi requires https://twitteroauth.com/

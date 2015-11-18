@@ -1,13 +1,11 @@
 {
   "name":  "Sevenedge/Utilities",
+  "type": "library",
   "description":  "Sevenedge Utilities",
   "license": "Get in touch with us and we'll dicuss it",
   "homepage":  "http://www.sevenedge.be",
   "require": {
 	"php": ">=5.4.16"
-  },
-  "require-dev": {
-	"phpunit/phpunit": "*"
   },
    "autoload": {
         "psr-4": {
@@ -15,3 +13,4 @@
         }
     }
 }
+

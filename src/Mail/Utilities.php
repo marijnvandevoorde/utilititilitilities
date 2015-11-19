@@ -149,7 +149,6 @@ class Utilities
                                 // add one line
                                 $output = "\n";
                                 break;
-
                         default:
                                 // print out contents of unknown tags
                                 $output = "";
@@ -212,8 +211,11 @@ class Utilities
                                                 // link to the same address: just use link
                                                 $output;
                                         } else {
-                                                // replace it
-                                                $output = "[$output]($href)";
+                                                $output = trim($output);
+                                                if (!empty($output)) {
+                                                        // replace it
+                                                        $output = "[$output]($href)";
+                                                }
                                         }
                                 }
 

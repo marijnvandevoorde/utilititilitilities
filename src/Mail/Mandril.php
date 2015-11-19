@@ -2,6 +2,8 @@
 
 namespace Sevenedge\Utilities\Mail;
 
+use Cake\Error\Debugger;
+
 class Mandril
 {
     private $_apiKey;

@@ -91,7 +91,7 @@ class Security {
 		}
 		$response = array('token' => implode('-', self::_createToken($token)));
 		if (!isset($token['token'])) {
-			$response['error'] = 'notoken';
+			$response['error'] = __('notoken');
 		}
 		else {
 			$receivedToken = explode('-', $token['token']);

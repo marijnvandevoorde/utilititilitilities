@@ -13,28 +13,6 @@ use Psr\Log\InvalidArgumentException;
  * @package Sevenedge\Utilities\Utilities
  *
  *
- * poc
- *
- * <?php
-
-$conn = ftp_ssl_connect('saasfs2.emsecure.net', 38021);
-ftp_login($conn, 'cust-axa', 'Uypog7A0XQQHnaI6');
-
-
-ftp_pasv($conn, true);
-$file = './test.txt';
-
-$remote_file = 'IN/test.txt';
-
-if (ftp_put($conn, $remote_file, $file, FTP_ASCII)) {
-echo "successfully uploaded $file\n";
-} else {
-echo "There was a problem while uploading $file\n";
-}
-
-// close the connection
-ftp_close($conn);
-~                      
  */
 class Selligent {
 

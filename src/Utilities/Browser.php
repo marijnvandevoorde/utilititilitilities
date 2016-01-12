@@ -1,7 +1,5 @@
 <?php
 
-namespace Sevenedge\Utilities\Utilities;
-
 /**
  * File: Browser.php
  * Author: Chris Schuld (http://chrisschuld.com/)
@@ -112,7 +110,7 @@ class Browser
 
 	const OPERATING_SYSTEM_UNKNOWN = 'unknown';
 
-	public function __construct($userAgent = "")
+	public function Browser($userAgent = "")
 	{
 		$this->reset();
 		if ($userAgent != "") {
@@ -148,24 +146,6 @@ class Browser
 	function isBrowser($browserName)
 	{
 		return (0 == strcasecmp($this->_browser_name, trim($browserName)));
-	}
-
-	/**
-	 * The name of the OS.  All return types are from the class contants
-	 * @return string Name of the OS
-	 */
-	public function getOs()
-	{
-		return $this->_os;
-	}
-
-	/**
-	 * Set the name of the OS
-	 * @param $browser string The name of the OS
-	 */
-	public function setOs($os)
-	{
-		$this->_os = $os;
 	}
 
 	/**
@@ -600,8 +580,15 @@ class Browser
 	 */
 	protected function checkBrowserInternetExplorer()
 	{
+		// Test for IE Edge
+		if (stripos($this->_agent, 'Edge/12') !== false) {
+			$this->setBrowser(self::BROWSER_IE);
+			$aresult = explode('/', stristr($this->_agent, 'Edge'));
+			$this->setVersion($aresult[1]);
+			return true;
+		}
 		//  Test for IE11
-		if( stripos($this->_agent,'Trident/7.0; rv:11.0') !== false ) {
+		else if( stripos($this->_agent,'Trident/7.0; rv:11.0') !== false ) {
 			$this->setBrowser(self::BROWSER_IE);
 			$this->setVersion('11.0');
 			return true;

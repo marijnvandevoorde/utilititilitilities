@@ -1,5 +1,5 @@
 <?php
-namespace Sevenedge\Utilities\Utilities;
+namespace Marijnworks\Utilities\Utilities;
 
 use Cake\Core\Configure;
 use Cake\Network\Exception\BadRequestException;
@@ -10,7 +10,7 @@ use Psr\Log\InvalidArgumentException;
 
 /**
  * Class Selligent
- * @package Sevenedge\Utilities\Utilities
+ * @package Marijnworks\Utilities\Utilities
  *
  *
  */

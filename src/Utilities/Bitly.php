@@ -1,13 +1,13 @@
 <?php
 
 /**
- * @Author Rein Deneut
- * @Email Rein@sevenedge.be
+ * @Author marijn vandevoorde
+ * @Email marijn@marijnworks.be
  *
  * For all your bit.ly needs.
  */
 
-namespace Sevenedge\Utilities\Utilities;
+namespace Marijnworks\Utilities\Utilities;
 
 class Bitly {
 

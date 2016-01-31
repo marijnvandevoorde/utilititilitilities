@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevenedge\Utilities\Utilities;
+namespace Marijnworks\Utilities\Utilities;
 
 if (!defined('IMAGETOOLS_LIB')) {
 	define('IMAGETOOLS_LIB', 'GD');

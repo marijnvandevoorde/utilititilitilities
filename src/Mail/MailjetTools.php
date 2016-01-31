@@ -10,7 +10,7 @@
  */
 
 
-namespace Sevenedge\Utilities\Mail;
+namespace Marijnworks\Utilities\Mail;
 
 class MailjetTools
 {

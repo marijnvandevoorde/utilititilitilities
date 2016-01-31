@@ -1,8 +1,8 @@
 <?php
 
-	namespace Sevenedge\Utilities\Social;
+	namespace Marijnworks\Utilities\Social;
 
-	use Sevenedge\Utilities\Utilities;
+	use Marijnworks\Utilities\Utilities;
 
 	class SimpleGramAPI  extends SocialAPI
 	{

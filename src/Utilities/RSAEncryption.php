@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevenedge\Utilities\Utilities;
+namespace Marijnworks\Utilities\Utilities;
 
 define('CRYPT_RSA_PKCS15_COMPAT', true);
 

@@ -7,8 +7,8 @@
  *
  */
 
-namespace Sevenedge\Utilities\Mail;
-use Sevenedge\Utilities\Utilities\CurlRequest;
+namespace Marijnworks\Utilities\Mail;
+use Marijnworks\Utilities\Utilities\CurlRequest;
 
 class CitobiApi
 {

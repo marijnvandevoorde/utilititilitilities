@@ -22,9 +22,9 @@
  * 	);
  *
  */
-namespace Sevenedge\Utilities\Notification;
+namespace Marijnworks\Utilities\Notification;
 
-use Sevenedge\Utilities\Utilities\CurlRequest;
+use Marijnworks\Utilities\Utilities\CurlRequest;
 
 class Notifier
 {

@@ -1,15 +1,15 @@
 {
-  "name":  "Sevenedge/Utilities",
+  "name":  "Marijnworks/Utilities",
   "type": "library",
-  "description":  "Sevenedge Utilities",
-  "license": "Get in touch with us and we'll dicuss it",
-  "homepage":  "http://www.sevenedge.be",
+  "description":  "Marijnworks Utilities",
+  "license": "Get in touch with me and we'll dicuss it",
+  "homepage":  "http://www.marijnwroks.be",
   "require": {
 	"php": ">=5.4.16"
   },
    "autoload": {
         "psr-4": {
-            "Sevenedge\\Utilities\\": "src"
+            "Marijnworks\\Utilities\\": "src"
         }
     }
 }

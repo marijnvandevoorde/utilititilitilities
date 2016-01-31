@@ -11,7 +11,7 @@
  *    Marijn Vandevoorde - throw it in a nice class, haha
  ****************************************************************************/
 
-namespace Sevenedge\Utilities\Mail;
+namespace Marijnworks\Utilities\Mail;
 
 
 class Html2TextException extends \Exception {

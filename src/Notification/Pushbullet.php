@@ -7,10 +7,10 @@
  *
  * Super simple push to pushbullet api.
  */
-namespace Sevenedge\Utilities\Notification;
+namespace Marijnworks\Utilities\Notification;
 
 use Cake\Network\Exception\BadRequestException;
-use Sevenedge\Utilities\Utilities\CurlRequest;
+use Marijnworks\Utilities\Utilities\CurlRequest;
 
 class Pushbullet
 {

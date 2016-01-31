@@ -1,8 +1,8 @@
 <?php
 
-namespace Sevenedge\Utilities\StreamingServices;
+namespace Marijnworks\Utilities\StreamingServices;
 
-use Sevenedge\Utilities\Utilities;
+use Marijnworks\Utilities\Utilities;
 
 /**
  * Class Spotifapi

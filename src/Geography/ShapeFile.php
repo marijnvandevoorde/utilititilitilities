@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevenedge\Utilities\Geography;
+namespace Marijnworks\Utilities\Geography;
 
 /***************************************************************************************************
 ShapeFile - PHP Class to read an ESRI Shapefile and its associated DBF

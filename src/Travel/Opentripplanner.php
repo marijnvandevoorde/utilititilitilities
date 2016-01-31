@@ -1,8 +1,8 @@
 <?php
 
-namespace Sevenedge\Utilities\Travel;
-use Sevenedge\Utilities\Utilities\CurlRequest;
-use Sevenedge\Utilities\Geography;
+namespace Marijnworks\Utilities\Travel;
+use Marijnworks\Utilities\Utilities\CurlRequest;
+use Marijnworks\Utilities\Geography;
 
 class Opentripplanner {
 

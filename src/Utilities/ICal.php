@@ -7,7 +7,7 @@
  * Ical parser.
  */
 
-namespace Sevenedge\Utilities\Utilities;
+namespace Marijnworks\Utilities\Utilities;
 
 /**
  * This PHP class should only read an iCal file (*.ics), parse it and return an

@@ -7,7 +7,7 @@
  * Beats the crap out of that crap api
  */
 
-namespace Sevenedge\Utilities\Utilities;
+namespace Marijnworks\Utilities\Utilities;
 
 use Cake\Network\Exception\UnauthorizedException;
 
@@ -101,7 +101,7 @@ class Basecamp
                 array(
                     'Authorization: Bearer ' . $this->_credentials['access_token'],
                     'Content-Type: application/json',
-                    'User-Agent: Watchdog (marijn@sevenedge.be)'
+                    'User-Agent: Watchdog (marijn@marijnworks.be)'
                 ), true,
                 array()
             );
@@ -189,7 +189,7 @@ class Basecamp
                 array(
                     'Authorization: Bearer ' . $this->_credentials['access_token'],
                     'Content-Type: application/json',
-                    'User-Agent: Watchdog (marijn@sevenedge.be)'
+                    'User-Agent: Watchdog (marijn@marijnworks.be)'
                 )
             );
         }
@@ -229,7 +229,7 @@ class Basecamp
                 array(
                     'Authorization: Bearer ' . $this->_credentials['access_token'],
                     'Content-Type: application/json',
-                    'User-Agent: Watchdog (marijn@sevenedge.be)'
+                    'User-Agent: Watchdog (marijn@marijnworks.be)'
                 ),
                 true,
                 $curlOpts
@@ -290,7 +290,7 @@ class Basecamp
                     array(
                         'Authorization: Bearer ' . $this->_credentials['access_token'],
                         'Content-Type: application/json',
-                        'User-Agent: Watchdog (marijn@sevenedge.be)'
+                        'User-Agent: Watchdog (marijn@marijnworks.be)'
                     )
                 );
             }

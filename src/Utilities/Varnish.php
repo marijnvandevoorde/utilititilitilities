@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevenedge\Utilities\Utilities;
+namespace Marijnworks\Utilities\Utilities;
 
 /**
  * Class Varnish

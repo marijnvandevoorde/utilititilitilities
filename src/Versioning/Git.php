@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevenedge\Utilities\Versioning;
+namespace Marijnworks\Utilities\Versioning;
 /*
  * Git.php
  *

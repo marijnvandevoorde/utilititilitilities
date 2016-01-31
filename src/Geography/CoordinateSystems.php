@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Sevenedge\Utilities\Geography;
+namespace Marijnworks\Utilities\Geography;
 
 class CoordinateSystems {
 	CONST

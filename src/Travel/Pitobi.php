@@ -5,8 +5,8 @@ require_once(dirname( __FILE__ ) . '/curlrequest.php');
 
 /**
  * Class Pitobi
- * @author Marijn Vandevoorde <marijn@sevenedge.be>
- * @link http://www.sevenedge.be
+ * @author Marijn Vandevoorde <marijn@marijnworks.be>
+ * @link http://www.marijnworks.be
  *
  * Magical pitobi api wrapper. you can login and pretty much do everything you want. only thing is that you have to authorize your account once. (this can be done by generating the landingurl below
  *

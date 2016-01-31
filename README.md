@@ -1,4 +1,4 @@
-# Sevenedge Utilities  Library#
+# Marijnworks Utilities  Library#
 
 ## Installation instructions##
 
@@ -7,14 +7,14 @@ Since we want this repo to remain private, we can't add it to packagist for comp
  "repositories": [
     {
         "type": "vcs",
-        "url":  "git@bitbucket.org:sevenedge/sevenedge-utilities.git"
+        "url":  "git@bitbucket.org:marijnworks/marijnworks-utilities.git"
     }
 ]
 ```
 
 Now, add the Library to the require section as you would with a regular packagist repository:
 ```
-    "Sevenedge/Utilities": "dev-master"
+    "Marijnworks/Utilities": "dev-master"
 ```        
 
 Run composer update and you're done!

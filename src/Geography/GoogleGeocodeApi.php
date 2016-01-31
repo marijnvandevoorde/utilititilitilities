@@ -1,5 +1,5 @@
 <?php
-namespace Sevenedge\Utilities\Geography;
+namespace Marijnworks\Utilities\Geography;
 
 class GoogleGeocodeApi {
 	protected static function getCity($lat, $lng) {

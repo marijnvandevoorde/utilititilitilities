@@ -11,7 +11,7 @@
  * Feel free to fork or send pull requests for any additional stuff you might find lacking.
  * I'll be happy to share authorship
  */
-namespace Sevenedge\Utilities\Utilities;
+namespace Marijnworks\Utilities\Utilities;
 
 class CurlRequest
 {

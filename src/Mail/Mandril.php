@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevenedge\Utilities\Mail;
+namespace Marijnworks\Utilities\Mail;
 
 use Cake\Error\Debugger;
 

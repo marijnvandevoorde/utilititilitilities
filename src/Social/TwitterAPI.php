@@ -1,6 +1,6 @@
 <?php
 
-namespace Sevenedge\Utilities\Social;
+namespace Marijnworks\Utilities\Social;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
 

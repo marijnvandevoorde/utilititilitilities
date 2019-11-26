@@ -25,8 +25,8 @@ If  extensive instructions are in place, you should find / put them in the docs 
 
 
 ## Requirements / Prequisites
+I feel ashamed today I didn't put these in composer back then. But here goes:
 
-We've decided not to put the requirements in composer because they're only rarely needed, and not everything can be installed through composer anyway. But requirements you might bump into are:
 * a lot of the classes require curl to be installed
 * some require GD or Imagick for Image processing
 * the twitterapi requires https://twitteroauth.com/

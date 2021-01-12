@@ -1,5 +1,9 @@
 # Marijnworks Utilities  Library
 
+## Disclaimer
+This is really some old junk. If there's anything useful in here AT ALL, feel free to just copy. Kudos if you share it publicly and clean things up!
+
+
 ## Installation instructions
 
 Using git as a repository next to packagist is quite simple. Just add this to the bottom of your composer.json file (or add the repository to existing repositories);
